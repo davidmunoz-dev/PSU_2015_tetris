@@ -1,0 +1,88 @@
+/*
+** my_tetris.h for a in /PSU_2015_tetris/include
+**
+** Made by David Munoz
+** Login   <munoz_d@epitech.net>
+**
+** Started on  Mon Feb 22 14:05:05 2016 David Munoz
+** Last update Thu Mar  3 15:54:34 2016 David Munoz
+*/
+
+
+#ifndef TETRIS_H_
+# define TETRIS_H_
+
+#define _BSD_SOURCE
+#define _POSIX_SOURCE
+#define _POSIX_C_SOURCE 199309L
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <signal.h>
+#include <sys/wait.h>
+#include <ncurses.h>
+#include <dirent.h>
+#include <fcntl.h>
+#include <time.h>
+#include "my_struct.h"
+#include "my_struct_interface.h"
+
+# define RED                    "\033[1;31m"
+# define GREEN                  "\033[1;32m"
+# define PURPLE                 "\033[1;35m"
+# define CYAN                   "\033[1;36m"
+# define BROWN                  "\033[0;33m"
+# define BLUE                   "\033[1;34m"
+# define YELLOW                 "\033[1;33m"
+# define BLANK                  "\033[0m"
+
+# define TRUE	1
+# define FALSE	0
+
+/*
+  INTERFACE
+*/
+void	interface(void);
+void    check_has_color(void);
+void    print_TE(t_pr *arg);
+void    print_TR(t_pr *arg);
+void    print_IS(t_pr *arg);
+void    my_cadre();
+void    loop_game(t_pr *arg);
+void    print_TETRIS(t_pr *arg);
+void    print_next_tetriminos(t_pr *arg);
+void    next_tetriminos(t_pr *arg);
+void    interface_tetris(t_pr *arg);
+void    info_tetris(t_pr *arg);
+void    print_info_tetris(t_pr *arg);
+void    subtract_time(struct timespec * __restrict later,
+                      struct timespec * __restrict former);
+
+/*
+  OPTION
+*/
+void	recup_option(char **opt, t_struct *st);
+int	check_option(char **opt, int a, int b, t_struct *st);
+char	**tab_option_name(char **option_name);
+void	options_list(int b, char *arg1, char *arg2, t_struct *st);
+void	help(t_struct *st);
+void	level(char *arg, t_struct *st);
+void	key_left(char *arg, t_struct *st);
+void	key_right(char *arg, t_struct *st);
+void	key_turn(char *arg, t_struct *st);
+void	key_drop(char *arg, t_struct *st);
+void	key_quit(char *arg, t_struct *st);
+void	key_pause(char *arg, t_struct *st);
+void	map_size(char *arg1, char *arg2, t_struct *st);
+void	without_next(t_struct *st);
+void	debug(t_struct *st);
+void	make_tetrimino_list(t_struct *st);
+void	creat_clean_list(t_struct *st);
+void	show_tetrimino_list(t_struct *st);
+int	open_tetrimino(char *file);
+int	tetrimino_cmp(char *s1);
+
+
+#endif /* TETRIS_H_ ! */
